@@ -1,0 +1,170 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ——— Fonts ——— */
+@font-face {
+  font-family: "Fraunces";
+  src: url("/assets/fonts/Fraunces.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/assets/fonts/PlusJakartaSans.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 200 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Playfair Display";
+  src: url("/assets/fonts/PlayfairDisplay.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 400 900;
+  font-style: normal;
+}
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+
+    /* AVK School Memories — Warm Amber + Deep Navy palette */
+    --background: 0.98 0.012 85;
+    --foreground: 0.18 0.04 260;
+
+    --card: 1 0.008 80;
+    --card-foreground: 0.18 0.04 260;
+
+    --popover: 1 0 0;
+    --popover-foreground: 0.18 0.04 260;
+
+    /* Deep navy primary */
+    --primary: 0.25 0.08 260;
+    --primary-foreground: 0.98 0.01 85;
+
+    /* Warm amber secondary */
+    --secondary: 0.94 0.05 80;
+    --secondary-foreground: 0.25 0.08 260;
+
+    --muted: 0.93 0.02 80;
+    --muted-foreground: 0.5 0.04 260;
+
+    /* Golden accent */
+    --accent: 0.78 0.15 65;
+    --accent-foreground: 0.15 0.04 260;
+
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+
+    --border: 0.88 0.025 80;
+    --input: 0.91 0.02 80;
+    --ring: 0.25 0.08 260;
+
+    /* Chart colors */
+    --chart-1: 0.646 0.222 41.116;
+    --chart-2: 0.6 0.118 184.704;
+    --chart-3: 0.398 0.07 227.392;
+    --chart-4: 0.828 0.189 84.429;
+    --chart-5: 0.769 0.188 70.08;
+
+    /* Sidebar */
+    --sidebar: 0.96 0.015 85;
+    --sidebar-foreground: 0.18 0.04 260;
+    --sidebar-primary: 0.25 0.08 260;
+    --sidebar-primary-foreground: 0.98 0.01 85;
+    --sidebar-accent: 0.94 0.05 80;
+    --sidebar-accent-foreground: 0.25 0.08 260;
+    --sidebar-border: 0.88 0.025 80;
+    --sidebar-ring: 0.25 0.08 260;
+
+    /* Custom AVK tokens */
+    --gold: 0.72 0.18 68;
+    --gold-light: 0.88 0.12 80;
+    --navy: 0.22 0.09 264;
+    --cream: 0.97 0.015 85;
+    --parchment: 0.94 0.03 78;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Playfair Display", serif;
+    letter-spacing: -0.01em;
+  }
+}
+
+/* ——— Decorative utilities ——— */
+@layer utilities {
+  .font-display {
+    font-family: "Fraunces", serif;
+  }
+  .font-serif {
+    font-family: "Playfair Display", serif;
+  }
+  .font-body {
+    font-family: "Plus Jakarta Sans", sans-serif;
+  }
+
+  .text-gold {
+    color: oklch(var(--gold));
+  }
+  .bg-gold {
+    background-color: oklch(var(--gold));
+  }
+  .bg-navy {
+    background-color: oklch(var(--navy));
+  }
+  .text-navy {
+    color: oklch(var(--navy));
+  }
+  .bg-cream {
+    background-color: oklch(var(--cream));
+  }
+  .bg-parchment {
+    background-color: oklch(var(--parchment));
+  }
+
+  /* Grain texture overlay */
+  .grain-overlay::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Photo card hover */
+  .photo-card-hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .photo-card-hover:hover {
+    transform: translateY(-4px) rotate(0.3deg);
+    box-shadow: 0 20px 40px -10px rgba(34, 45, 96, 0.2);
+  }
+}
+
+/* ——— Custom scrollbar ——— */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: oklch(var(--cream));
+}
+::-webkit-scrollbar-thumb {
+  background: oklch(var(--gold));
+  border-radius: 4px;
+}
